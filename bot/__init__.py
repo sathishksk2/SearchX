@@ -186,14 +186,14 @@ if os.path.exists('drive_list'):
         lines = f.readlines()
         for line in lines:
             temp = line.strip().split()
-            DRIVE_NAME.append(temp[0])
+            DRIVE_NAME.append(temp[0].replace("_", " "))
             DRIVE_ID.append(temp[1])
             try:
                 INDEX_URL.append(temp[2])
-            except IndexError:
+            except IndexError as e:
                 INDEX_URL.append(None)
 
-if DRIVE_ID:
+if DRIVE_ID :
     pass
 else:
     LOGGER.error("drive_list file is missing")
